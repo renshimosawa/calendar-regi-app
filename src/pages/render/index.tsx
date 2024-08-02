@@ -61,7 +61,7 @@ const index = () => {
   return (
     <div>
       <Head>
-        <title>カレンダー登録してちょうだい！</title>
+        <title>カレンダー登録してちょうだい！※デフォルトブラウザ推奨</title>
         <meta
           name="description"
           content={

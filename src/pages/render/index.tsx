@@ -45,9 +45,9 @@ const index = () => {
     eventObject.title
   }&dates=${eventObject.startDate
     .replace(/-/g, "")
-    .replace(/:/g, "")}/${eventObject.endDate.replace(/-/g, "")}&location=${
-    eventObject.location
-  }`;
+    .replace(/:/g, "")}/${eventObject.endDate
+    .replace(/-/g, "")
+    .replace(/:/g, "")}&location=${eventObject.location}`;
 
   // For Timetree
   const TimetreeUrl = `https://timetreeapp.com/calendars/events/new?title=${

@@ -83,7 +83,10 @@ const index = () => {
             "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
           }
         />
-        <link rel="canonical" href={`${path}`} />
+        <link
+          rel="canonical"
+          href={`https://calendar-add.vercel.app/${path}`}
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

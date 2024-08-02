@@ -65,7 +65,7 @@ export default function Home() {
       });
   };
 
-  const renderedUrl = `/render/?${param}`;
+  const renderedUrl = `https://calendar-add.vercel.app/render/?${param}`;
 
   const router = useRouter();
   const path = router.pathname;
@@ -94,7 +94,10 @@ export default function Home() {
             "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
           }
         />
-        <link rel="canonical" href={`${path}`} />
+        <link
+          rel="canonical"
+          href={`https://calendar-add.vercel.app/${path}`}
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

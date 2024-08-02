@@ -8,6 +8,12 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
 import dayjs, { Dayjs } from "dayjs";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Link from "next/link";
+import Tooltip from "@mui/material/Tooltip";
+import Snackbar from "@mui/material/Snackbar";
+import LaunchIcon from "@mui/icons-material/Launch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +23,9 @@ export default function Home() {
   const [endDate, setEndDate] = useState<Dayjs | null>(null);
   const [location, setLocation] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
+  const [param, setParam] = useState("");
   const handleSubmit = () => {
     if (!title) {
       setAlertMessage("タイトルを入力してください");
@@ -34,19 +42,33 @@ export default function Home() {
 
     const eventObject = {
       title,
-      startDate,
-      endDate,
+      startDate: startDate.format("YYYY-MM-DDTHHmmss"),
+      endDate: endDate.format("YYYY-MM-DDTHHmmss"),
       location,
     };
 
-    console.log(eventObject.startDate);
+    console.log(eventObject);
     setAlertMessage("");
-    // ここでURLを発行するための処理を追加します
+    setParam(
+      `title=${eventObject.title}&start=${eventObject.startDate}&end=${eventObject.endDate}&location=${eventObject.location}`
+    );
   };
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(`/render/?${param}`)
+      .then(() => {
+        setSnackbarOpen(true);
+      })
+      .catch((err) => {
+        console.error("コピーに失敗しました: ", err);
+      });
+  };
+
+  const renderedUrl = `/render/?${param}`;
   return (
     <div>
       <Header />
-      <main className={`min-h-screen mt-24 ${inter.className}`}>
+      <main className={`mt-24 pb-20 ${inter.className}`}>
         <div className="text-center">
           <h1 className="text-4xl font-bold">カレンダー登録してちょうだい！</h1>
           <p className="text-xl mt-5">
@@ -58,7 +80,7 @@ export default function Home() {
             このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。
           </p>
 
-          <ul className="mt-3">
+          <ul className="mt-3 text-xs">
             <li>
               ※
               URLを生成する性質上、ブラウザ版を提供しているカレンダーにしか対応していません。
@@ -83,12 +105,14 @@ export default function Home() {
                 onChange={(e) => setTitle(e.target.value)}
               />
               <DateTimePicker
+                ampm={false}
                 className="w-full"
                 label="STEP 2: 開始日時/Start date *"
                 value={startDate}
                 onChange={(newValue) => setStartDate(newValue)}
               />
               <DateTimePicker
+                ampm={false}
                 className="w-full"
                 label="STEP 3: 終了日時/End date *"
                 value={endDate}
@@ -112,8 +136,35 @@ export default function Home() {
               {alertMessage && <Alert severity="error">{alertMessage}</Alert>}
             </div>
           </LocalizationProvider>
+          {param && (
+            <div className="mt-8">
+              <p className="font-bold text-orange-600">
+                このURLを友達に共有してください！
+              </p>
+              <div className="flex justify-center items-center">
+                <Tooltip title="コピーする">
+                  <button onClick={copyToClipboard}>
+                    <Card className="max-w-[700px] inline-block p-2">
+                      <p className="">{renderedUrl}</p>
+                    </Card>
+                  </button>
+                </Tooltip>
+                <Tooltip title="新規タブで開く">
+                  <Link href={renderedUrl}>
+                    <LaunchIcon />
+                  </Link>
+                </Tooltip>
+              </div>
+            </div>
+          )}
         </div>
       </main>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={() => setSnackbarOpen(false)}
+        message="コピーされました！"
+      ></Snackbar>
     </div>
   );
 }

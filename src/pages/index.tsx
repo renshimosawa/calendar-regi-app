@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import TextField from "@mui/material/TextField";
@@ -7,13 +6,14 @@ import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Link from "next/link";
 import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
 import LaunchIcon from "@mui/icons-material/Launch";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -65,8 +65,57 @@ export default function Home() {
   };
 
   const renderedUrl = `/render/?${param}`;
+
+  const router = useRouter();
+  const path = router.pathname;
   return (
     <div>
+      <Head>
+        <title>カレンダー登録してちょうだい！</title>
+        <meta
+          name="description"
+          content={
+            "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
+          }
+        />
+        <meta property="og:title" content={`カレンダー登録してちょうだい！`} />
+        <meta
+          property="og:description"
+          content={
+            "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
+          }
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={`カレンダー登録してちょうだい！`} />
+        <meta
+          name="twitter:description"
+          content={
+            "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
+          }
+        />
+        <link rel="canonical" href={`${path}`} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+      </Head>
       <Header />
       <main className={`mt-24 pb-20 ${inter.className}`}>
         <div className="text-center">

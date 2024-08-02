@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Card from "@mui/material/Card";
 import dayjs from "dayjs";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -54,12 +55,61 @@ const index = () => {
 
   // For outlook
   const OutlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${eventObject.title}&startdt=${eventObject.startDate}&enddt=${eventObject.endDate}&location=${eventObject.location}`;
+
+  const path = router.pathname;
   return (
     <div>
+      <Head>
+        <title>カレンダー登録してちょうだい！</title>
+        <meta
+          name="description"
+          content={
+            "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
+          }
+        />
+        <meta property="og:title" content={`カレンダー登録してちょうだい！`} />
+        <meta
+          property="og:description"
+          content={
+            "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
+          }
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={`カレンダー登録してちょうだい！`} />
+        <meta
+          name="twitter:description"
+          content={
+            "「この予定カレンダー入れといて！」このサイトを共有すれば、友達は自分のカレンダーに合わせて、予定をすぐには登録できます。"
+          }
+        />
+        <link rel="canonical" href={`${path}`} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+      </Head>
       <Header />
       <main className={`mt-24 pb-20`}>
         <div className="text-center">
           <h1 className="text-4xl font-bold">カレンダー登録してちょうだい！</h1>
+          <p>デフォルトブラウザ推奨</p>
           <div className="text-left inline-block m-auto">
             <p className="mt-2">タイトル: {eventObject.title}</p>
             <p>開始日時: {formattedStartDate}</p>

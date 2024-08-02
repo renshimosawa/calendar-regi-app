@@ -70,9 +70,8 @@ export default function Home() {
       <Header />
       <main className={`mt-24 pb-20 ${inter.className}`}>
         <div className="text-center">
-          <h1 className="text-4xl font-bold">カレンダー登録してちょうだい！</h1>
+          <h1 className="text-3xl font-bold">カレンダー登録してちょうだい！</h1>
           <p className="text-xl mt-5">
-            友達に
             <span className="font-bold text-orange-600">
               「この予定カレンダー入れといて！」
             </span>
@@ -92,7 +91,28 @@ export default function Home() {
             <li>
               ※ カレンダー提供元の仕様が変わったらどうしようもありません。
             </li>
+            <li>※ 以下のカレンダーにしか対応してません、ごめん。</li>
           </ul>
+          <div className="flex justify-center items-center gap-x-3">
+            <img
+              src="/google-calender.svg"
+              alt="Google カレンダー"
+              width={32}
+              height={32}
+            />
+            <img
+              src="/outlook-calender.svg"
+              alt="Outlookカレンダー"
+              width={32}
+              height={32}
+            />
+            <img
+              src="/timetree-calender.svg"
+              alt="Time tree"
+              width={32}
+              height={32}
+            />
+          </div>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <div className="mt-10 max-w-[700px] m-auto flex flex-col gap-y-4 justify-center items-center">
@@ -150,7 +170,7 @@ export default function Home() {
                   </button>
                 </Tooltip>
                 <Tooltip title="新規タブで開く">
-                  <Link href={renderedUrl}>
+                  <Link href={renderedUrl} target="_blank">
                     <LaunchIcon />
                   </Link>
                 </Tooltip>

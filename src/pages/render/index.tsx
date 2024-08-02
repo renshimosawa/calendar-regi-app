@@ -106,9 +106,11 @@ const index = () => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Header />
-      <main className={`mt-24 pb-20`}>
+      <main className={`mt-24 pb-20 m:px-[5%]`}>
         <div className="text-center">
-          <h1 className="text-4xl font-bold">カレンダー登録してちょうだい！</h1>
+          <h1 className="text-4xl font-bold m:text-2xl">
+            カレンダー登録してちょうだい！
+          </h1>
           <p>デフォルトブラウザ推奨</p>
           <div className="text-left inline-block m-auto">
             <p className="mt-2">タイトル: {eventObject.title}</p>

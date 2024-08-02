@@ -117,9 +117,11 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Header />
-      <main className={`mt-24 pb-20 ${inter.className}`}>
+      <main className={`mt-24 pb-20 m:px-[5%] ${inter.className}`}>
         <div className="text-center">
-          <h1 className="text-3xl font-bold">カレンダー登録してちょうだい！</h1>
+          <h1 className="text-3xl font-bold m:text-2xl">
+            カレンダー登録してちょうだい！
+          </h1>
           <p className="text-xl mt-5">
             <span className="font-bold text-orange-600">
               「この予定カレンダー入れといて！」

@@ -14,6 +14,7 @@ import Snackbar from "@mui/material/Snackbar";
 import LaunchIcon from "@mui/icons-material/Launch";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -117,7 +118,7 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Header />
-      <main className={`mt-24 pb-20 m:px-[5%] ${inter.className}`}>
+      <main className={`mt-24 pb-20 m:px-[5%] min-h-[87vh] ${inter.className}`}>
         <div className="text-center">
           <h1 className="text-3xl font-bold m:text-2xl">
             カレンダー登録してちょうだい！
@@ -236,6 +237,7 @@ export default function Home() {
         onClose={() => setSnackbarOpen(false)}
         message="コピーされました！"
       ></Snackbar>
+      <Footer />
     </div>
   );
 }

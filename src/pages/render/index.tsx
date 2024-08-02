@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Card from "@mui/material/Card";
 import dayjs from "dayjs";
@@ -106,7 +107,7 @@ const index = () => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Header />
-      <main className={`mt-24 pb-20 m:px-[5%]`}>
+      <main className={`mt-24 pb-20 m:px-[5%] min-h-[85vh]`}>
         <div className="text-center">
           <h1 className="text-4xl font-bold m:text-2xl">
             カレンダー登録してちょうだい！
@@ -150,6 +151,7 @@ const index = () => {
           </a>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

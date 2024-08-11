@@ -54,9 +54,12 @@ export default function Home() {
       `title=${eventObject.title}&start=${eventObject.startDate}&end=${eventObject.endDate}&location=${eventObject.location}`
     );
   };
+
+  const renderedUrl = `https://calendar-add.vercel.app/render/?${param}`;
+
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(`/render/?${param}`)
+      .writeText(renderedUrl)
       .then(() => {
         setSnackbarOpen(true);
       })
@@ -64,8 +67,6 @@ export default function Home() {
         console.error("コピーに失敗しました: ", err);
       });
   };
-
-  const renderedUrl = `https://calendar-add.vercel.app/render/?${param}`;
 
   const router = useRouter();
   const path = router.pathname;

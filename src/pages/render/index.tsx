@@ -107,7 +107,7 @@ const index = () => {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#fef2f2" />
       </Head>
       <Header />
       <main className={`mt-24 pb-20 m:px-[5%] min-h-[85vh]`}>
